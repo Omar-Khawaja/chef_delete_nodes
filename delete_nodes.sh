@@ -1,6 +1,8 @@
 #!/bin/bash
 
-file=nodes.txt
+# Specify your file below
+
+file=<your filename goes here>
 slot=0
 
 printf "\nLocating file containing list of nodes...\n\n"
