@@ -3,7 +3,8 @@
 # Specify your file below
 
 file=<your filename goes here>
-slot=0
+node_slot=0
+client_slot=0
 
 printf "\nLocating file containing list of nodes...\n\n"
 sleep 2
@@ -26,14 +27,14 @@ while read line; do
 	yes | knife node delete $line
 	status_node=$?
 		if [ $status_node -ne 0 ]; then
-			faildel_nodes[slot]=$line
-			((slot++))
+			faildel_nodes[$node_slot]=$line
+			((node_slot++))
 		fi
 	yes | knife client delete $line
 	status_client=$?
 		if [ $status_client -ne 0 ]; then
-			faildel_clients[slot]=$line
-			((slot++))
+			faildel_clients[$client_slot]=$line
+			((client_slot++))
 		fi
 done < $file
 
